@@ -1,0 +1,34 @@
+{
+  "include": [
+    "src/*",
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"],
+    "strict": true,
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "strictFunctionTypes": true,
+    "allowJs": true,
+    "module": "ESNext",
+    "target": "es5",
+    "moduleResolution": "node",
+    "lib": [
+      "dom",
+      "es5",
+      "es6",
+      "es7",
+      "es2015.promise",
+      "dom.iterable"
+    ],
+    "sourceMap": true,
+    "pretty": true,
+    "downlevelIteration":true
+  }
+}

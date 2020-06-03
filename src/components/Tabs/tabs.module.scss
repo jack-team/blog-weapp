@@ -1,0 +1,74 @@
+@import "./../../styles/var";
+
+$height: 48PX;
+
+.tabs_container {
+  height: 100%;
+  position: relative;
+  padding-top: $height;
+}
+
+.tab_header_container {
+  height: $height;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  position: absolute;
+  border-bottom: 1PX solid #ececec;
+  background: linear-gradient(to bottom, #ff7a4c, #ff5655)
+}
+
+.tab_header_content {
+  height: 100%;
+  display: flex;
+}
+
+.tab_header_item {
+  flex: 1;
+  color: rgba(255, 255, 255, .7);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: $height;
+  text-align: center;
+}
+
+.tab_header_selected {
+  color: rgba(255, 255, 255, 1);
+}
+
+.tab_header_indicator {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3PX;
+  z-index: 10;
+  position: absolute;
+
+  .indicator {
+    height: 100%;
+    background-color: #f2f2f2;
+    transition: transform .3s ease;
+  }
+}
+
+.tabs_content {
+  height: 100%;
+  overflow: hidden;
+}
+
+.tabs_content_scroll {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  transition: transform .3s ease;
+}
+
+.tabs_content_item {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 20%;
+  position: absolute;
+  background-color: #f2f2f2;
+}
