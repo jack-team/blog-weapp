@@ -29,7 +29,7 @@ const instance = (
       method: method,
       url: getUrl(url),
       fail: fail(reject),
-      success: success(resolve)
+      success: success(resolve,reject)
     })
   })
 );

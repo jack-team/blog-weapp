@@ -189,7 +189,7 @@ class Content extends PureComponent<Props,State> {
                 共({this.replies.length})条评论
               </View>
               {this.replies.map((
-                item:ReplyItem,i:number
+                item:ReplyItem
               ) => <Reply key={item.id} item={item} /> )}
             </View>
           </View>

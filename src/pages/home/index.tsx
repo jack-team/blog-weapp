@@ -4,8 +4,7 @@ import Taro,{
 } from '@tarojs/taro';
 
 import {
-  View,
-  Image
+  View
 } from '@tarojs/components';
 
 import {

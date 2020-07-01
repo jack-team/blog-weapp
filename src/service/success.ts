@@ -1,8 +1,23 @@
 export default (
-  resolve: Function
+  resolve: Function,
+  reject:Function
 ) => (res: any) => {
   const {
     data = {}
   } = res || {};
-  resolve(data.data||data);
+
+  const {
+    success,
+    data:_data,
+    error_msg
+  } = data;
+
+  if(success) {
+    resolve( _data || data );
+  }
+  else {
+    reject({
+      message:error_msg
+    })
+  }
 }

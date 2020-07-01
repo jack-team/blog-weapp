@@ -1,0 +1,33 @@
+$height: 36PX;
+@import "./../../styles/var";
+
+.input_view {
+  padding-bottom: 8PX;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.input_style {
+  font-size: 14PX;
+  color: #333;
+  height: $height;
+  line-height: $height;
+}
+
+.input_header {
+  height: 20PX;
+  position: relative;
+  overflow: hidden;
+}
+
+.placeholder_view {
+  font-size: 12PX;
+  color: #999;
+  opacity: 0;
+  transition: all .3s ease;
+  transform: translate3d(0,100%,0);
+}
+
+.placeholder_show {
+  opacity: 1;
+  transform: translate3d(0,0,0);
+}

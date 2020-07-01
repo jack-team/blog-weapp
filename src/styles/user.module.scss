@@ -1,5 +1,25 @@
 @import "./var";
 
-.page_view {
-  
+.page_container {
+  padding: 20PX 0;
+}
+
+.header_content {
+  display: flex;
+  margin-bottom: 18PX;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user_name {
+  color: #454545;
+  font-size: 16PX;
+  margin-top: 6PX;
+}
+
+.loading_content {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

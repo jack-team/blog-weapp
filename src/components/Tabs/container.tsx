@@ -8,11 +8,13 @@ import {
 } from '@tarojs/components';
 
 export interface TabItem {
-  title: string
+  title: string,
+  [propName:string]:any
 }
 
 interface Props {
   page: number,
+  height?:number,
   tabs: Array<TabItem>,
   onChange: Function
 }
@@ -25,6 +27,7 @@ class Container extends PureComponent<Props> {
   static defaultProps = {
     page: 0,
     tabs: [],
+    height:56,
     onChange: () => null
   }
 
@@ -52,6 +55,7 @@ class Container extends PureComponent<Props> {
     const {
       tabs,
       page,
+      height,
       children,
       onChange
     } = this.props;
@@ -60,6 +64,7 @@ class Container extends PureComponent<Props> {
         <Header
           tabs={tabs}
           page={page}
+          height={height}
           onChange={onChange}
         />
         <View className={styles.tabs_content}>

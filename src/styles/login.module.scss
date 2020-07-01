@@ -1,0 +1,33 @@
+@import "./var";
+
+$button_height:44PX;
+
+.page_view {
+  padding: 30PX 20PX 0 20PX;
+}
+
+.input_view {
+  padding: 10PX 0;
+  border-bottom: 1px solid #ececec;
+}
+
+.submit_button {
+  color: $color;
+  font-size: 16PX;
+  margin-bottom: 18PX;
+  border-radius: 4PX;
+  text-align: center;
+  height: $button_height;
+  line-height: $button_height;
+  border: 1px solid $color;
+  transition: all .2s ease;
+
+  &:active {
+    color: #fff;
+    background-color: $color;
+  }
+}
+
+.buttons {
+   padding-top: 36PX;
+}

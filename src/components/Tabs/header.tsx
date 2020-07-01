@@ -12,9 +12,9 @@ import {
   TabItem
 } from './container';
 
-
 interface Props {
   page: number,
+  height?:number,
   tabs: Array<TabItem>,
   onChange: Function
 }
@@ -26,6 +26,7 @@ class Header extends PureComponent<Props> {
   static defaultProps = {
     tabs: [],
     page: 0,
+    height:56,
     onChange: () => null
   }
 
@@ -40,6 +41,16 @@ class Header extends PureComponent<Props> {
     }
   }
 
+  get styles() {
+    const {
+      height
+    } = this.props;
+    return {
+      height:`${height}PX`,
+      lineHeight:`${height}PX`
+    }
+  }
+
   render() {
     const {
       tabs,
@@ -48,7 +59,10 @@ class Header extends PureComponent<Props> {
     } = this.props;
 
     return (
-      <View className={styles.tab_header_container}>
+      <View
+        style={this.styles}
+        className={styles.tab_header_container}
+      >
         <View className={styles.tab_header_content}>
           {tabs.map((item: TabItem, i: number) => {
             const callBack = useCallback(

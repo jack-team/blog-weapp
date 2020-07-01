@@ -32,7 +32,9 @@ export default (
     case constants.getUserInfo: {
       state.userInfo = data;
       state.token = data.token;
-      return state;
+      return {
+        ...state
+      };
     }
   }
 
