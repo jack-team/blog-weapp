@@ -20,9 +20,10 @@ import store, { persist } from './state';
 class App extends Component {
   config:Config = {
     pages: [
-      'pages/user/index',
       'pages/home/index',
-      'pages/detail/index',
+      'pages/user/index',
+      'pages/user/info',
+      'pages/detail/index'
     ],
     window: {
       navigationBarTextStyle:`white`,

@@ -1,5 +1,9 @@
 @import "./var";
 
+.page_view {
+  padding-bottom: 56PX;
+}
+
 .page_container {
   padding: 20PX 0;
 }
@@ -22,4 +26,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.page_content_inner {
+  background-color: #f2f2f2;
+}
+
+.login_out {
+  display: flex;
+  padding: 0 16PX 4PX 16PX;
+  justify-content: flex-end;
+}
+
+.login_out_button {
+  font-size: 14PX;
+  color: $color;
 }

@@ -11,10 +11,6 @@ import {
 } from 'taro-ui';
 
 import {
-  ReplyItem
-} from './../../state/reducers/detail';
-
-import {
   Parser
 } from './../../components';
 
@@ -23,7 +19,7 @@ import forNow from './../../utils/forNow';
 import styles from './../../styles/detail.module.scss';
 
 interface Props {
-  item:ReplyItem
+  item:any
 }
 
 class Replies extends PureComponent<Props> {
@@ -73,14 +69,23 @@ class Replies extends PureComponent<Props> {
     return content;
   }
 
+  private onAvatarClick = (e:any) => {
+    e.stopPropagation();
+    Taro.navigateTo({
+      url:`/pages/user/info?userName=${this.userName}`
+    })
+  }
+
   render() {
     return (
       <View className={styles.reply_item}>
-        <AtAvatar
-          size="small"
-          circle={true}
-          image={this.avatarUrl}
-        />
+        <View onClick={this.onAvatarClick}>
+          <AtAvatar
+            size="small"
+            circle={true}
+            image={this.avatarUrl}
+          />
+        </View>
         <View className={styles.reply_content}>
           <View className={styles.reply_user_content}>
             <View className={styles.reply_user_name}>

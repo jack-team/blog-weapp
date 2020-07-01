@@ -13,6 +13,8 @@ interface State {
 
 interface Props {
   userName:string;
+  showLoginOut?:boolean;
+  onLoginOut?:Function
 }
 
 import {
@@ -30,6 +32,11 @@ class ContentView extends PureComponent<Props,State> {
 
   state:State = {
     userInfo:``
+  }
+
+  static defaultProps = {
+    showLoginOut:false,
+    onLoginOut:() => null
   }
 
   get showLoading() {
@@ -77,12 +84,13 @@ class ContentView extends PureComponent<Props,State> {
   get tabs():any {
     return [
       {
-        title:`最近发布的`,
-        list:this.recent_topics
+        list:this.recent_topics,
+        title:`最近发布的(${this.recent_topics.length})`
       },
       {
-        title:`最近参与的`,
-        list:this.recent_replies
+
+        list:this.recent_replies,
+        title:`最近参与的(${this.recent_replies.length})`
       }
     ]
   }
@@ -100,7 +108,26 @@ class ContentView extends PureComponent<Props,State> {
     })
   }
 
+  private onClickOut = () => {
+    const {
+      onLoginOut
+    } = this.props;
+    Taro.showModal({
+      title:`确认要退出登录?`,
+      success:(res) => {
+        if (res.confirm) {
+          if(onLoginOut) {
+            onLoginOut()
+          }
+        }
+      }
+    })
+  }
+
   render() {
+    const {
+      showLoginOut
+    } = this.props;
     return (
       <View>
         {this.showLoading ? (
@@ -113,6 +140,16 @@ class ContentView extends PureComponent<Props,State> {
           </View>
         ):(
           <View className={styles.page_container}>
+            {showLoginOut && (
+              <View className={styles.login_out}>
+                <View
+                  onClick={this.onClickOut}
+                  className={styles.login_out_button}
+                >
+                  退出登录
+                </View>
+              </View>
+            )}
             <View className={styles.header_content}>
               <AtAvatar
                 size="large"
@@ -123,7 +160,7 @@ class ContentView extends PureComponent<Props,State> {
                 {this.userName}
               </View>
             </View>
-            <View className={styles.page_content}>
+            <View className={styles.page_content_inner}>
               <ListContent tabs={this.tabs} />
             </View>
           </View>

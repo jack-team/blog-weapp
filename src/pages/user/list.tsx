@@ -1,11 +1,7 @@
-import {
+import Taro,{
   Config,
   PureComponent
 } from '@tarojs/taro';
-
-import {
-  View
-} from "@tarojs/components";
 
 import {
   Content,
@@ -19,6 +15,8 @@ interface Props {
 interface State {
   curPage:number
 }
+
+import ListItem from './item';
 
 class List extends PureComponent<Props> {
 
@@ -36,6 +34,13 @@ class List extends PureComponent<Props> {
   private onChange = (page:number) => {
     this.setState({
       curPage:page
+    },this.scrollToTop)
+  }
+
+  private scrollToTop = () => {
+    Taro.pageScrollTo({
+      duration:0,
+      scrollTop:0
     })
   }
 
@@ -56,13 +61,21 @@ class List extends PureComponent<Props> {
         onChange={this.onChange}
       >
         {this.tabs.map((tab:any,i:number) => {
+          const { list = [] } = tab;
           return (
             <Content
               key={i}
               page={i}
               current={curPage}
             >
-
+              {list.map((item:any) => {
+                return (
+                  <ListItem
+                    data={item}
+                    key={item.id}
+                  />
+                )
+              })}
             </Content>
           )
         })}

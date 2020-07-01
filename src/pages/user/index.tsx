@@ -100,21 +100,25 @@ class User extends PureComponent<any> {
     Taro.hideLoading();
   }
 
+  private onLoginOut = () => {
+    this.userActions.userLoginOut();
+  }
+
   render() {
     return (
       <View className={styles.page_view}>
         <AtMessage />
-        <View className={styles.page_content}>
-          {this.isLogin ? (
-            <ContentPage
-              userName={this.userName}
-            />
-            ):(
-            <LoginPage
-              onLogin={this.onLogin}
-            />
-          )}
-        </View>
+        {this.isLogin ? (
+          <ContentPage
+            showLoginOut={true}
+            userName={this.userName}
+            onLoginOut={this.onLoginOut}
+          />
+        ):(
+          <LoginPage
+            onLogin={this.onLogin}
+          />
+        )}
         <TabBar page={1}/>
       </View>
     )

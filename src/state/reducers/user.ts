@@ -36,6 +36,14 @@ export default (
         ...state
       };
     }
+
+    case constants.userLoginOut: {
+      state.userInfo = {};
+      state.token = ``;
+      return {
+        ...state
+      };
+    }
   }
 
   return state;

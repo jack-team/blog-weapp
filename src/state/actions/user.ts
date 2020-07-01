@@ -26,3 +26,11 @@ export const getUserInfo = (token: string) => (
     }
   }
 )
+
+//退出登录
+
+export const userLoginOut = () => {
+  return {
+    type:constants.userLoginOut
+  }
+}

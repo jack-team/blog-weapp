@@ -37,7 +37,6 @@ interface State {
   data?:Detail | any
 }
 
-
 class Content extends PureComponent<Props,State> {
   static defaultProps = {
     topicId:``
@@ -143,6 +142,13 @@ class Content extends PureComponent<Props,State> {
     })
   }
 
+  private onAvatarClick = (e:any) => {
+    e.stopPropagation();
+    Taro.navigateTo({
+      url:`/pages/user/info?userName=${this.userName}`
+    })
+  }
+
   render() {
     return (
       <View className={styles.container}>
@@ -158,11 +164,13 @@ class Content extends PureComponent<Props,State> {
           <View className={styles.page_container}>
             <View className={styles.header}>
               <View className={styles.header_content}>
-                <AtAvatar
-                  size="small"
-                  circle={true}
-                  image={this.avatar}
-                />
+                <View onClick={this.onAvatarClick}>
+                  <AtAvatar
+                    size="small"
+                    circle={true}
+                    image={this.avatar}
+                  />
+                </View>
                 <View className={styles.header_right}>
                   <View className={styles.user_name}>
                     {this.userName}

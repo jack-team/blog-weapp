@@ -105,6 +105,13 @@ class RowItem extends PureComponent<Props> {
     })
   }
 
+  private onAvatarClick = (e:any) => {
+    e.stopPropagation();
+    Taro.navigateTo({
+      url:`/pages/user/info?userName=${this.userName}`
+    })
+  }
+
   render() {
     return (
       <View
@@ -113,11 +120,13 @@ class RowItem extends PureComponent<Props> {
       >
         <View className={styles.row_content}>
           <View className={styles.row_content_left}>
-            <AtAvatar
-              size="small"
-              circle={true}
-              image={this.avatar}
-            />
+            <View onClick={this.onAvatarClick}>
+              <AtAvatar
+                size="small"
+                circle={true}
+                image={this.avatar}
+              />
+            </View>
             <View className={styles.user_content}>
               <View className={styles.user_name}>
                 {this.userName}
@@ -127,9 +136,11 @@ class RowItem extends PureComponent<Props> {
               </View>
             </View>
           </View>
-          <View className={styles.visit_count}>
-            {this.visitCount} 人浏览
-          </View>
+          {this.visitCount > 0 && (
+            <View className={styles.visit_count}>
+              {this.visitCount} 人浏览
+            </View>
+          )}
         </View>
         <View className={styles.row_title}>
           {!!this.tagName ? (
