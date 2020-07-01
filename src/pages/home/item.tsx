@@ -13,7 +13,7 @@ import {
 
 import {
   TopicItem
-} from './../../state/reducers/home';
+} from './../../types/item';
 
 interface Props {
   data:TopicItem
@@ -46,7 +46,7 @@ class RowItem extends PureComponent<Props> {
     const {
       title
     } = this.Data;
-    return title;
+    return title || ``;
   }
 
   get author() {
@@ -117,10 +117,14 @@ class RowItem extends PureComponent<Props> {
               size="small"
               circle={true}
               image={this.avatar}
-              className={styles.avatar_style}
             />
-            <View className={styles.user_name}>
-              {this.userName} • 更新于{this.updateTime}
+            <View className={styles.user_content}>
+              <View className={styles.user_name}>
+                {this.userName}
+              </View>
+              <View className={styles.update_time}>
+                更新于{this.updateTime}
+              </View>
             </View>
           </View>
           <View className={styles.visit_count}>

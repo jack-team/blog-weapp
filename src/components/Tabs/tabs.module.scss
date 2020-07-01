@@ -1,22 +1,19 @@
+$height: 56PX;
 @import "./../../styles/var";
 
-$height: 48PX;
-
 .tabs_container {
-  height: 100%;
   position: relative;
-  padding-top: $height;
 }
 
 .tab_header_container {
-  height: $height;
+  top: 0;
   left: 0;
   right: 0;
-  top: 0;
   z-index: 10;
-  position: absolute;
+  height: $height;
+  position: sticky;
+  background: $color;
   border-bottom: 1PX solid #ececec;
-  background: linear-gradient(to bottom, #ff7a4c, #ff5655)
 }
 
 .tab_header_content {
@@ -33,11 +30,11 @@ $height: 48PX;
   text-align: center;
 }
 
-.tab_header_selected {
+.tab_selected {
   color: rgba(255, 255, 255, 1);
 }
 
-.tab_header_indicator {
+.tab_indicator {
   left: 0;
   right: 0;
   bottom: 0;
@@ -47,28 +44,36 @@ $height: 48PX;
 
   .indicator {
     height: 100%;
-    background-color: #f2f2f2;
     transition: transform .3s ease;
+  }
+
+  .indicator_scroll {
+    width: 64%;
+    height: 100%;
+    margin: auto;
+    background-color: #fff;
   }
 }
 
 .tabs_content {
-  height: 100%;
-  overflow: hidden;
+  height: auto;
+  overflow-x: hidden;
 }
 
 .tabs_content_scroll {
   height: 100%;
   overflow: hidden;
   position: relative;
+  display: flex;
   transition: transform .3s ease;
 }
 
 .tabs_content_item {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 20%;
-  position: absolute;
-  background-color: #f2f2f2;
+  width: 100vw;
+}
+
+.tab_item_hide {
+  height: 100vh;
+  overflow: hidden;
+  visibility: hidden;
 }

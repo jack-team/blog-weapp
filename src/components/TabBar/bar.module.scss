@@ -1,0 +1,56 @@
+$height: 56PX;
+@import "./../../styles/var";
+
+.tab_bar_container {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  height: $height;
+  position: fixed;
+  align-items: center;
+  background-color: #fff;
+  border-top: 1px solid #ececec;
+}
+
+.tab_bar_item {
+  flex: 1;
+  position: relative;
+
+  &:after {
+    content: '';
+    right: 0;
+    top: 50%;
+    width: 1px;
+    height: 70%;
+    position: absolute;
+    background-color: #ececec;
+    transform: translate3d(0,-50%,0);
+  }
+}
+
+.tab_bar_container {
+  .tab_bar_item:last-child {
+    &:after {
+      display: none;
+    }
+  }
+}
+
+.tab_bar_icon {
+  width: 40PX *.72;
+  height: 41PX *.72;
+  display: block;
+  margin: auto;
+}
+
+.tab_bar_text {
+  color: #767676;
+  font-size: 10PX;
+  text-align: center;
+}
+
+.tab_bar_selected {
+  color: #fc1581;
+}

@@ -9,7 +9,7 @@ interface Props {
   html:string
 }
 
-const getUrl = (url:string) => url;
+const getUrl = (url:string) => `https:${url}`;
 
 class Parser extends PureComponent<Props> {
 

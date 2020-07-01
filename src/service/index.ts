@@ -13,7 +13,9 @@ const getUrl = (url: string) => (
   `${Const.apiUrl}${url}`
 )
 
-const instance = (opts: Options) => (
+const instance = (
+  opts: Options
+) => (
   new Promise((
     resolve, reject
   ) => {
@@ -30,19 +32,19 @@ const instance = (opts: Options) => (
       success: success(resolve)
     })
   })
-)
+);
 
 const get = (url: string, data?: any) => (
   instance({url: url, data: data, method: 'GET'})
-)
+);
 
 const post = (url: string, data?: any) => (
   instance({url: url, data: data, method: 'POST'})
-)
+);
 
 class Service {
   static get = get;
   static post = post;
-}
+};
 
 export default Service;

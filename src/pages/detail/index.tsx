@@ -1,4 +1,4 @@
-import {
+import Taro,{
   Config,
   PureComponent
 } from '@tarojs/taro';
@@ -6,10 +6,11 @@ import {
 import Content from './content';
 
 class Detail extends PureComponent {
-
   config: Config = {
-    navigationBarTitleText: `CNode 中文社区`
+    enablePullDownRefresh: true
   }
+
+  public _content:any = null;
 
   get params() {
     const {
@@ -25,9 +26,19 @@ class Detail extends PureComponent {
     return topicId;
   }
 
+  public onPullDownRefresh() {
+    this._content.onGetData().
+    then(() => {
+      Taro.stopPullDownRefresh();
+    })
+  }
+
   render() {
     return (
-      <Content topicId={this.topicId} />
+      <Content
+        topicId={this.topicId}
+        ref={e => this._content = e}
+      />
     )
   }
 }

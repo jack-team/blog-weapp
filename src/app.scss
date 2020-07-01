@@ -12,14 +12,16 @@ view {
 
 @import '~taro-parse/dist/style/main.scss';
 
+@import "~taro-ui/dist/style/components/drawer.scss";
+
 .h2w {
-  color: #333;
+  color: #101010;
   font-family: '';
   font-size: 15PX;
 }
 
 .h2w__p {
-  color: #444;
+  color: #343434;
   font-size: 14PX;
   img {
     display: block;
@@ -28,6 +30,7 @@ view {
 }
 
 .h2w__img {
+  border-radius: 12px;
   width: 100% !important;
 }
 
@@ -37,15 +40,23 @@ view {
 
 .h2w-light .h2w__a {
   color: #4078c0;
+  border-color: #4078c0;
 }
 
 .loading {
   color: #999 !important;
   font-size: 14PX !important;
+  padding: 20px 0 !important;
 }
 
 .pullDownBlock {
   font-size: 14PX;
-  padding-bottom: 16PX;
   color: #999 !important;
+}
+
+.avatar_style_circle {
+  width: 24PX !important;
+  height: 24PX !important;
+  line-height: 24PX !important;
+  border-radius: 12PX !important;
 }

@@ -18,42 +18,33 @@ import {
 
 import Reply from './reply';
 
+import Service from './../../service';
+
 import {
   Detail,
   ReplyItem
-} from './../../state/reducers/detail';
-
-import connect from './../../utils/connect';
+} from './../../types/item';
 
 import forNow from './../../utils/forNow';
 
 import styles from './../../styles/detail.module.scss';
 
-import DetailActions, * as detailAction from './../../state/actions/detail';
-
 interface Props {
-  detail?:Detail,
-  topicId:string,
-  detailActions?:DetailActions
+  topicId:string
 }
 
-const _mapState_ = (
-  { detail }:any,
-  { topicId }:any
-) => {
-  const {
-    details = {}
-  } = detail || {};
-  return details[topicId] || {};
+interface State {
+  data?:Detail | any
 }
 
-@connect({detail:_mapState_},{
-  detailActions:detailAction
-})
-class Content extends PureComponent<Props> {
+
+class Content extends PureComponent<Props,State> {
   static defaultProps = {
-    topicId:``,
-    detailActions:{}
+    topicId:``
+  }
+
+  state:State = {
+    data:{}
   }
 
   get topicId() {
@@ -65,9 +56,9 @@ class Content extends PureComponent<Props> {
 
   get Data() {
     const {
-      detail
-    } = this.props;
-    return detail as Detail;
+      data
+    } = this.state;
+    return data  || {} as Detail;
   }
 
   get isLoading() {
@@ -133,19 +124,23 @@ class Content extends PureComponent<Props> {
     return replies;
   }
 
-  get detailActions() {
-    const {
-      detailActions
-    } = this.props;
-    return detailActions || {} as DetailActions;
+  async componentDidMount() {
+    this.onGetData();
   }
 
-  async componentDidMount() {
-    await this.detailActions.
-    getTopicDetail(this.topicId);
+  private onGetData = async () => {
+    const url:string = (
+      `/topic/${this.topicId}`
+    )
+    this.setState({
+      data:await Service.get(url)
+    },this.onLoaded)
+  }
+
+  public onLoaded = () => {
     Taro.setNavigationBarTitle({
       title:this.title
-    });
+    })
   }
 
   render() {
@@ -162,32 +157,40 @@ class Content extends PureComponent<Props> {
         ):(
           <View className={styles.page_container}>
             <View className={styles.header}>
-              <Text className={styles.title}>
-                {this.title}
-              </Text>
               <View className={styles.header_content}>
                 <AtAvatar
                   size="small"
                   circle={true}
                   image={this.avatar}
-                  className={styles.avatar_style}
                 />
                 <View className={styles.header_right}>
-                  <Text> • 作者 {this.userName}</Text>
-                  <Text> • 发布于 {forNow(this.createAt)}</Text>
-                  <Text> • {this.visitCount} 次浏览</Text>
+                  <View className={styles.user_name}>
+                    {this.userName}
+                  </View>
+                  <View className={styles.update_time}>
+                    发布于 {forNow(this.createAt)}
+                  </View>
+                </View>
+                <View className={styles.visit_count}>
+                  {this.visitCount} 次浏览
                 </View>
               </View>
+              <Text className={styles.title}>
+                {this.title}
+              </Text>
             </View>
             <View className={styles.desc_content}>
               {!!this.content && (
                 <Parser html={this.content} />
               )}
             </View>
-            <View style={styles.replies_content}>
+            <View className={styles.replies_content}>
+              <View className={styles.replies_header}>
+                共({this.replies.length})条评论
+              </View>
               {this.replies.map((
                 item:ReplyItem,i:number
-              ) => <Reply key={i} item={item} /> )}
+              ) => <Reply key={item.id} item={item} /> )}
             </View>
           </View>
         )}

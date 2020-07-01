@@ -1,5 +1,6 @@
+@import "./var";
 .container {
-  overflow: hidden;
+  width: 100%;
 }
 
 .loading {
@@ -14,64 +15,96 @@
 }
 
 .page_container {
-  overflow: hidden;
+  width: 100%;
 }
 
 .header {
-  padding: 36px 32px 16px 32px;
-  border-bottom: 8px solid #f2f2f2;
+  padding: 32px;
+  background-color: #fff;
+  border-bottom: 10PX solid #f2f2f2;
 }
 
 .header_content {
   display: flex;
-  padding: 20px 0;
+  margin-bottom: 16PX;
   align-items: center;
 }
 
 .title {
   color: #333;
   font-weight: 500;
-  font-size: 16px * 2;
-}
-
-.avatar_style {
-  width: 28px !important;
-  height: 28px !important;
-  line-height: 28px !important;
-  border-radius: 14px !important;
+  font-size: 14px * 2;
 }
 
 .header_right {
   flex: 1;
   color: #999;
-  font-size: 24px;
-  margin-left: 16px;
+  font-size: 12PX;
+  margin-left: 6PX;
 }
 
 .desc_content {
   overflow: hidden;
   padding-top: 20px;
   padding-bottom: 12px;
-  border-bottom: 8px solid #f2f2f2;
+  border-bottom: 10PX solid #f2f2f2;
+}
+
+.user_name {
+  color: #444;
+  font-size: 14PX;
+  margin-bottom: 4PX;
+}
+
+.update_time {
+  color: #999;
+  font-size: 10PX;
+}
+
+.visit_count {
+  color: #999;
+  font-size: 10PX;
+}
+
+.replies_header {
+  left: 0;
+  right: 0;
+  top: 0;
+  font-size: 28px;
+  color: #fff;
+  position: sticky;
+  padding: 24px 32px;
+  background-color: $color;
 }
 
 .replies_content {
-  overflow: hidden;
+  width: 100%;
 }
 
 .reply_item {
   display: flex;
   padding: 16PX;
-  border-bottom: 1PX solid #ececec;
+  border-bottom: 1PX solid #f2f2f2;
 }
 
 .reply_content {
   flex: 1;
+  overflow: hidden;
+}
+
+.reply_user_content {
+  padding-left: 30px;
+  margin-bottom: 10px;
 }
 
 .reply_user_name {
-  padding-left: 12PX;
-  font-size: 12PX;
+  font-size: 14PX;
   color: #444;
-  font-weight: bold;
+  margin-bottom: 6PX;
+}
+
+
+.reply_create {
+  font-size: 10PX;
+  color: #999;
 }

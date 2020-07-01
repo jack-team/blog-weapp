@@ -3,9 +3,7 @@ import {
 } from '@tarojs/taro';
 
 import {
-  View,
-  Navigator,
-  WebView
+  View
 } from "@tarojs/components";
 
 import {
@@ -84,12 +82,15 @@ class Replies extends PureComponent<Props> {
           image={this.avatarUrl}
         />
         <View className={styles.reply_content}>
-          <View className={styles.reply_user_name}>
-            {this.userName} {forNow(this.createAt)}
+          <View className={styles.reply_user_content}>
+            <View className={styles.reply_user_name}>
+              {this.userName}
+            </View>
+            <View className={styles.reply_create}>
+              {forNow(this.createAt)}
+            </View>
           </View>
-          <View>
-            <Parser html={this.content} />
-          </View>
+          <Parser html={this.content} />
         </View>
       </View>
     )

@@ -6,36 +6,106 @@ import {
   View
 } from '@tarojs/components';
 
-import styles from './tabs.module.scss';
-
 interface Props {
-  page:number,
-  total:number
+  page: number,
+  current: number
 }
 
-class Content extends PureComponent<Props> {
+interface State {
+  show: boolean
+}
+
+import styles from './tabs.module.scss';
+
+class Content extends PureComponent<Props, State> {
   static defaultProps = {
-    page:0
+    page: 0,
+    current: 0
   }
 
-  get contentStyle() {
+  private ms: number = 300;
+  private timer: any = null;
+
+  constructor(props: Props) {
+    super(props);
+
     const {
       page,
-      total
+      current
+    } = props;
+
+    const show = (
+      page === current
+    )
+
+    this.state = {
+      show: show
+    }
+  }
+
+  get isShow() {
+    const {
+      show
+    } = this.state;
+    return show;
+  }
+
+  componentDidUpdate() {
+    const {
+      show
+    } = this.state;
+
+    const {
+      page,
+      current
     } = this.props;
 
-    return {
-      width:`${1/total*100}%`,
-      transform: `translate3d(${page * 100}%,0,0)`
+    const _show: boolean = (
+      page === current
+    );
+
+    if (_show && !show) {
+      this.setState({
+        show: true
+      })
     }
+
+    if (!_show && show) {
+      this.onHidePage();
+    }
+  }
+
+  private onHidePage = () => {
+    this.timer = (
+      setTimeout(this.onShowState, this.ms)
+    )
+  }
+
+  private onShowState = () => {
+    this.setState({ show: false });
+  }
+
+  get className() {
+    const {
+      show
+    } = this.state;
+
+    const classList = [
+      styles.tabs_content_item
+    ];
+
+    if (!show) {
+      classList.push(
+        styles.tab_item_hide
+      );
+    };
+
+    return classList.join(` `);
   }
 
   render() {
     return (
-      <View
-        style={this.contentStyle}
-        className={styles.tabs_content_item}
-      >
+      <View className={this.className}>
         {this.props.children}
       </View>
     )

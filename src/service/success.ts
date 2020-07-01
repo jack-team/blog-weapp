@@ -4,5 +4,5 @@ export default (
   const {
     data = {}
   } = res || {};
-  resolve(data.data);
+  resolve(data.data||data);
 }
