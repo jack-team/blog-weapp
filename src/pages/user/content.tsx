@@ -159,7 +159,7 @@ class ContentView extends PureComponent<Props,State> {
               )}
               <View className={styles.header_content}>
                 <Avatar
-                  size={56}
+                  size={64}
                   url={this.avatar}
                 />
                 <View className={styles.user_name}>
