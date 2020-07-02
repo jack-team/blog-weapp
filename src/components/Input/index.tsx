@@ -61,6 +61,7 @@ class InputView extends PureComponent<Props> {
           onInput={this.onInput}
           placeholder={placeholder}
           className={styles.input_style}
+          placeholderClass={styles.placeholder}
         />
       </View>
     )

@@ -7,11 +7,8 @@ import {
 } from "@tarojs/components";
 
 import {
-  AtAvatar
-} from 'taro-ui';
-
-import {
-  Parser
+  Parser,
+  Avatar
 } from './../../components';
 
 import forNow from './../../utils/forNow';
@@ -79,13 +76,10 @@ class Replies extends PureComponent<Props> {
   render() {
     return (
       <View className={styles.reply_item}>
-        <View onClick={this.onAvatarClick}>
-          <AtAvatar
-            size="small"
-            circle={true}
-            image={this.avatarUrl}
-          />
-        </View>
+        <Avatar
+          url={this.avatarUrl}
+          onClick={this.onAvatarClick}
+        />
         <View className={styles.reply_content}>
           <View className={styles.reply_user_content}>
             <View className={styles.reply_user_name}>

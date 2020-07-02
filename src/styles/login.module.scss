@@ -6,6 +6,13 @@ $button_height:44PX;
   padding: 30PX 20PX 0 20PX;
 }
 
+.logo_icon {
+  width: 140PX;
+  height: 60PX;
+  display: block;
+  margin: 0 auto 30PX auto;
+}
+
 .input_view {
   padding: 10PX 0;
   border-bottom: 1px solid #ececec;
@@ -30,4 +37,11 @@ $button_height:44PX;
 
 .buttons {
    padding-top: 36PX;
+}
+
+.desc_text {
+  color: #999;
+  font-size: 12PX;
+  line-height: 21PX;
+  padding-top: 10PX;
 }

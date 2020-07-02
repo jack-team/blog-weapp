@@ -1,0 +1,35 @@
+.avatar_container {
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
+  background-color: #f6f6f6;
+}
+
+@mixin imagePos() {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  display: block;
+  position: absolute;
+}
+
+.avatar_image {
+  opacity: 0;
+  z-index: 0;
+  @include imagePos();
+  transition: opacity .36s ease;
+}
+
+.avatar_default {
+  opacity: 1;
+  z-index: 1;
+  @include imagePos();
+  position: absolute;
+}
+
+.avatar_image_show {
+  opacity: 1;
+}

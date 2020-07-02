@@ -4,7 +4,8 @@ import {
 } from '@tarojs/taro';
 
 import {
-  View
+  View,
+  Image
 } from "@tarojs/components";
 
 interface State {
@@ -18,13 +19,18 @@ interface Props {
 }
 
 import {
-  AtAvatar,
   AtActivityIndicator
 } from 'taro-ui';
+
+import {
+  Avatar
+} from './../../components';
 
 import ListContent from './list';
 
 import Service from './../../service';
+
+import exit_icon from './../../static/exit@2x.png';
 
 import styles from './../../styles/user.module.scss';
 
@@ -140,24 +146,25 @@ class ContentView extends PureComponent<Props,State> {
           </View>
         ):(
           <View className={styles.page_container}>
-            {showLoginOut && (
-              <View className={styles.login_out}>
-                <View
-                  onClick={this.onClickOut}
-                  className={styles.login_out_button}
-                >
-                  退出登录
+            <View className={styles.header_container}>
+              {showLoginOut && (
+                <View className={styles.login_out}>
+                  <View onClick={this.onClickOut}>
+                    <Image
+                      src={exit_icon}
+                      className={styles.login_out_button}
+                    />
+                  </View>
                 </View>
-              </View>
-            )}
-            <View className={styles.header_content}>
-              <AtAvatar
-                size="large"
-                circle={true}
-                image={this.avatar}
-              />
-              <View className={styles.user_name}>
-                {this.userName}
+              )}
+              <View className={styles.header_content}>
+                <Avatar
+                  size={56}
+                  url={this.avatar}
+                />
+                <View className={styles.user_name}>
+                  {this.userName}
+                </View>
               </View>
             </View>
             <View className={styles.page_content_inner}>

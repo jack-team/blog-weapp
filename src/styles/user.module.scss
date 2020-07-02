@@ -5,20 +5,30 @@
 }
 
 .page_container {
-  padding: 20PX 0;
+  padding: 0;
+}
+
+.header_container {
+  height: 200PX;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("./../static/bg.png");
 }
 
 .header_content {
   display: flex;
-  margin-bottom: 18PX;
+  height: 100%;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
 }
 
 .user_name {
-  color: #454545;
+  color: #fff;
   font-size: 16PX;
-  margin-top: 6PX;
+  margin-top: 10PX;
 }
 
 .loading_content {
@@ -33,12 +43,14 @@
 }
 
 .login_out {
-  display: flex;
-  padding: 0 16PX 4PX 16PX;
-  justify-content: flex-end;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  position: absolute;
+  padding: 16PX 16PX 4PX 16PX;
 }
 
 .login_out_button {
-  font-size: 14PX;
-  color: $color;
+  width: 28PX;
+  height: 28PX;
 }

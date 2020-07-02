@@ -8,12 +8,12 @@ import {
 } from "@tarojs/components";
 
 import {
-  AtAvatar,
   AtActivityIndicator
 } from 'taro-ui';
 
 import {
-  Parser
+  Parser,
+  Avatar
 } from './../../components';
 
 import Reply from './reply';
@@ -164,13 +164,10 @@ class Content extends PureComponent<Props,State> {
           <View className={styles.page_container}>
             <View className={styles.header}>
               <View className={styles.header_content}>
-                <View onClick={this.onAvatarClick}>
-                  <AtAvatar
-                    size="small"
-                    circle={true}
-                    image={this.avatar}
-                  />
-                </View>
+                <Avatar
+                  url={this.avatar}
+                  onClick={this.onAvatarClick}
+                />
                 <View className={styles.header_right}>
                   <View className={styles.user_name}>
                     {this.userName}

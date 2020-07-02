@@ -4,7 +4,8 @@ import Taro,{
 } from '@tarojs/taro';
 
 import {
-  View
+  View,
+  Image
 } from "@tarojs/components";
 
 import {
@@ -20,6 +21,8 @@ interface State {
 interface Props {
   onLogin:Function
 }
+
+import logo_icon from './../../static/logo.svg';
 
 class Login extends PureComponent<Props,State> {
 
@@ -72,6 +75,7 @@ class Login extends PureComponent<Props,State> {
 
     return (
       <View className={styles.page_view}>
+        <Image src={logo_icon} className={styles.logo_icon}/>
         <InputView
           value={token}
           onInput={this.onTokenInput}
@@ -82,6 +86,9 @@ class Login extends PureComponent<Props,State> {
           <View className={styles.submit_button} onClick={this.openScan}>
             扫码登录
           </View>
+        </View>
+        <View className={styles.desc_text}>
+          登录现在只支持 AccessToken 登录，AccessToken获取方法：浏览器打开 https://cnodejs.org/setting，页面底部有二维码，可进行扫码登录，或者复制 AccessToken获取方法。
         </View>
       </View>
     )

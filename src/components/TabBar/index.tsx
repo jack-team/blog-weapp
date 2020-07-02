@@ -10,11 +10,11 @@ import {
 
 import styles from './bar.module.scss';
 
-import me_icon from './../../static/me_normal@2x.png';
-import me_icon_selected from './../../static/me_selected@2x.png';
+import me_icon from './../../static/m_n@2x.png';
+import me_icon_selected from './../../static/m_s@2x.png';
 
-import home_icon from './../../static/discover_normal@2x.png';
-import home_icon_selected from './../../static/discover_selected@2x.png';
+import home_icon from './../../static/h_n@2x.png';
+import home_icon_selected from './../../static/h_s@2x.png';
 
 const barList = [
   {

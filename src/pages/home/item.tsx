@@ -8,8 +8,8 @@ import {
 } from '@tarojs/components';
 
 import {
-  AtAvatar
-} from 'taro-ui';
+  Avatar
+} from './../../components';
 
 import {
   TopicItem
@@ -120,13 +120,10 @@ class RowItem extends PureComponent<Props> {
       >
         <View className={styles.row_content}>
           <View className={styles.row_content_left}>
-            <View onClick={this.onAvatarClick}>
-              <AtAvatar
-                size="small"
-                circle={true}
-                image={this.avatar}
-              />
-            </View>
+            <Avatar
+              url={this.avatar}
+              onClick={this.onAvatarClick}
+            />
             <View className={styles.user_content}>
               <View className={styles.user_name}>
                 {this.userName}
