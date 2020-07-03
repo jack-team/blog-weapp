@@ -145,7 +145,7 @@ class PageContent extends PureComponent<Props, State> {
     } = this.state;
 
     const _opts = {
-      limit: 30,
+      limit: 16,
       page: page,
       tab: this.tab
     }

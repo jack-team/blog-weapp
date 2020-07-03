@@ -25,6 +25,8 @@ import {
   ReplyItem
 } from './../../types/item';
 
+import Edit from './edit';
+
 import forNow from './../../utils/forNow';
 
 import styles from './../../styles/detail.module.scss';
@@ -165,6 +167,7 @@ class Content extends PureComponent<Props,State> {
             <View className={styles.header}>
               <View className={styles.header_content}>
                 <Avatar
+                  size={40}
                   url={this.avatar}
                   onClick={this.onAvatarClick}
                 />
@@ -190,8 +193,16 @@ class Content extends PureComponent<Props,State> {
               )}
             </View>
             <View className={styles.replies_content}>
-              <View className={styles.replies_header}>
-                共({this.replies.length})条评论
+              <View className={styles.replies_header_sticky}>
+                <View className={styles.replies_header}>
+                  共({this.replies.length})条评论
+                </View>
+                {/*<View className={styles.comment_box}>*/}
+                  {/*<View className={styles.comment_box_header}>*/}
+                    {/*评论*/}
+                  {/*</View>*/}
+                  {/*<Edit />*/}
+                {/*</View>*/}
               </View>
               {this.replies.map((
                 item:ReplyItem

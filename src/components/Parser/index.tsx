@@ -2,14 +2,16 @@ import {
   PureComponent
 } from '@tarojs/taro';
 
-
 import TaroParser from 'taro-parse';
 
 interface Props {
   html:string
 }
 
-const getUrl = (url:string) => `https:${url}`;
+const getUrl = (url:string) => {
+  const prefix = `http`;
+  return url.includes(prefix) ? url:`https:${url}`;
+};
 
 class Parser extends PureComponent<Props> {
 
@@ -38,6 +40,7 @@ class Parser extends PureComponent<Props> {
     return (
       <TaroParser
         content={html}
+        type="markdown"
         onImgClick={this.onImgClick}
         onLinkClick={this.onLinkClick}
       />

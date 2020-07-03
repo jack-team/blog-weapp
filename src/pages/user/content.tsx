@@ -73,6 +73,13 @@ class ContentView extends PureComponent<Props,State> {
     return userName;
   }
 
+  get score() {
+    const {
+      score = 0
+    } = this.userInfo;
+    return score;
+  }
+
   get recent_replies() {
     const {
       recent_replies
@@ -164,6 +171,9 @@ class ContentView extends PureComponent<Props,State> {
                 />
                 <View className={styles.user_name}>
                   {this.userName}
+                </View>
+                <View className={styles.score_num}>
+                  积分：{this.score}
                 </View>
               </View>
             </View>

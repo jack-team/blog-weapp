@@ -25,10 +25,16 @@
   justify-content: center;
 }
 
-.user_name {
+.user_name,
+.score_num {
   color: #fff;
   font-size: 16PX;
   margin-top: 10PX;
+}
+
+.score_num {
+  font-size: 12PX;
+  margin-top: 6PX;
 }
 
 .loading_content {

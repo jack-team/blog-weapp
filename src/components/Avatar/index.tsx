@@ -71,6 +71,15 @@ class Avatar extends PureComponent<Props,State> {
     })
   }
 
+  private onClick = (e:any) => {
+    const {
+      onClick
+    } = this.props;
+    if(onClick) {
+      onClick(e);
+    }
+  }
+
   render() {
     const {
       url
@@ -93,6 +102,7 @@ class Avatar extends PureComponent<Props,State> {
     return (
       <View
         style={this.style}
+        onClick={this.onClick}
         className={styles.avatar_container}
       >
         {!loaded && (

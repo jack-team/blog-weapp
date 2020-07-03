@@ -2,6 +2,7 @@ import fail from './fail';
 import success from './success';
 import Taro from '@tarojs/taro';
 import * as Const from './const';
+import upload from './upload';
 
 interface Options {
   data?: any,
@@ -45,6 +46,7 @@ const post = (url: string, data?: any) => (
 class Service {
   static get = get;
   static post = post;
+  static upload = upload;
 };
 
 export default Service;

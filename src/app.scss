@@ -29,12 +29,15 @@ view {
 }
 
 .h2w__img {
-  border-radius: 12px;
-  width: 100% !important;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
 .h2w__main {
   padding-top: 0;
+  margin: 0;
+  padding: 0 16PX 0 16PX;
 }
 
 .h2w-light .h2w__a {
